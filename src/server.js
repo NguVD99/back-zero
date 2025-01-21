@@ -2,7 +2,8 @@ require('dotenv').config();
 const express = require('express'); //commonjs
 const configViewEngine = require('./config/viewEngine');
 const webRouter = require('./routes/web');
-const mysql = require('mysql2');
+const connection = require('./config/database');
+
 
 
 // console.log(">>> check env:", process.env);
@@ -17,14 +18,7 @@ configViewEngine(app);
 app.use('/', webRouter);
 
 // Test connection
-// Create the connection to database
-const connection = mysql.createConnection({
-    host: '89.233.105.193',
-    port: 3306,
-    user: 'db_ngu_dev',
-    password: '123123123Aa',
-    database: 'db_ngu_dev',
-});
+
 
 // A simple SELECT query
 connection.query(
