@@ -3,6 +3,10 @@ const connection = require('../config/database');
 
 
 const getHomepage = (req, res) => {
+    return res.render('home.ejs')
+}
+
+const getABC = (req, res) => {
     //Process data
     //call model
     let users = [];
@@ -18,12 +22,6 @@ const getHomepage = (req, res) => {
             res.send(JSON.stringify(users))
         }
     );
-
-
-}
-
-const getABC = (req, res) => {
-    res.send('Check abc')
 }
 
 const getTest = (req, res) => {
