@@ -11,7 +11,7 @@ const app = express(); // App expree
 const port = process.env.PORT || 8888; // port
 const hostname = process.env.HOST_NAME;
 
-
+// config req.body
 app.use(express.json()) // for json
 app.use(express.urlencoded({ extended: true })) // for form data
 

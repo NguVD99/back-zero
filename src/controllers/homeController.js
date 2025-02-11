@@ -37,6 +37,8 @@ const postCreateUser = (req, res) => {
     let address = req.body.address
     let city = req.body.city
 
+    // let {name, email, address,city} = req.body;
+
     console.log(name, email, address, city)
 
     connection.query(
