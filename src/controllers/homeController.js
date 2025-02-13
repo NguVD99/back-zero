@@ -1,7 +1,6 @@
 const connection = require('../config/database');
 
 
-
 const getHomepage = (req, res) => {
     return res.render('home.ejs')
 }
@@ -29,30 +28,41 @@ const getTest = (req, res) => {
     res.render('sample.ejs')
 }
 
-const postCreateUser = (req, res) => {
-    console.log('>>>> req.body ', req.body)
+const postCreateUser = async (req, res) => {
+    // console.log('>>>> req.body ', req.body)
 
     let name = req.body.myname
     let email = req.body.email
     let address = req.body.address
     let city = req.body.city
 
-    // let {name, email, address,city} = req.body;
+    // let { name, email, address, city } = req.body;
 
-    console.log(name, email, address, city)
+    console.log("Name = ", name, "Email= ", email, "Address= ", address, "City= ", city)
+    // Cach 1
+    // connection.query(
+    //     `INSERT INTO Users (Name, Email, Address, City)
+    //     VALUES (?, ?, ?, ?);
+    //     `,
+    //     [name, email, address, city],
+    //     function (err, results) {
+    //         console.log(results);
+    //         res.send('Create User')
+    //     }
+    // );
 
-    connection.query(
-        `INSERT INTO Users (Name, Email, Address, City)
-        VALUES (?, ?, ?, ?);
-        `,
-        [name, email, address, city],
-        function (err, results) {
-            console.log(results);
-            res.send('Create User')
-        }
+
+    // cach 2
+    let [results, fields] = await connection.query(
+        `INSERT INTO Users (Name, Email, Address, City) VALUES (?, ?, ?, ?)`, [name, email, address, city]
     );
+    res.send('Create User');
+
+}
 
 
+const getCreatePage = (req, res) => {
+    res.render('create.ejs')
 }
 
 
@@ -60,5 +70,6 @@ module.exports = {
     getHomepage,
     getABC,
     getTest,
-    postCreateUser
+    postCreateUser,
+    getCreatePage
 }
