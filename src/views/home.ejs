@@ -14,44 +14,65 @@
     </div>
 
     <div class="table_container">
-        <%= JSON.stringify(listUsers) %>
-            <div class="title">List Users</div>
-            <table>
+        <!-- <%= JSON.stringify(listUsers) %> -->
+        <div class="title">List Users</div>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Addreaa</th>
+                <th>City</th>
+                <th>Actions</th>
+            </tr>
+            <!-- <% for (var i=0; i < listUsers.length; i++) { %>
                 <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Addreaa</th>
-                    <th>City</th>
-                    <th>Actions</th>
-                </tr>
-                <tr>
-                    <td>Peter</td>
-                    <td>Griffin</td>
-                    <td>$100</td>
-                    <td>$100</td>
-                    <td>$100</td>
+                    <td>
+                        <%= listUsers[i].id %>
+                    </td>
+                    <td>
+                        <%= listUsers[i].Name %>
+                    </td>
+                    <td>
+                        <%= listUsers[i].Email %>
+                    </td>
+                    <td>
+                        <%= listUsers[i].Address %>
+                    </td>
+                    <td>
+                        <%= listUsers[i].City %>
+                    </td>
                     <td>
                         <button>Edit</button>
                         <button>Delete</button>
                     </td>
                 </tr>
+                <% } %> -->
+
+            <% listUsers.forEach(function(users) { %>
                 <tr>
-                    <td>Lois</td>
-                    <td>Griffin</td>
-                    <td>$150</td>
+                    <td>
+                        <%= users.id %>
+                    </td>
+                    <td>
+                        <%= users.Name %>
+                    </td>
+                    <td>
+                        <%= users.Email %>
+                    </td>
+                    <td>
+                        <%= users.Address %>
+                    </td>
+                    <td>
+                        <%= users.City %>
+                    </td>
+                    <td>
+                        <a href="/edit/<%= users.id %>">Edit</a>
+                        <button>Delete</button>
+                    </td>
                 </tr>
-                <tr>
-                    <td>Joe</td>
-                    <td>Swanson</td>
-                    <td>$300</td>
-                </tr>
-                <tr>
-                    <td>Cleveland</td>
-                    <td>Brown</td>
-                    <td>$250</td>
-                </tr>
-            </table>
+                <% }); %>
+        </table>
     </div>
 
     <!-- <div class="form-add-new">
